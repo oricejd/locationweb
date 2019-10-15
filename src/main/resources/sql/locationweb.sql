@@ -10,3 +10,4 @@ type varchar(10)
 select * from location;
 
 -- drop table location;
+-- user test / password test
