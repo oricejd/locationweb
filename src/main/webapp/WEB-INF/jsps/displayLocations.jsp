@@ -36,5 +36,7 @@
 		</c:forEach>
 	</table>
 	<a href="showCreate">Add Location</a>
+	<br>
+	<a href="generateReport">Generate Report</a>
 </body>
 </html>
