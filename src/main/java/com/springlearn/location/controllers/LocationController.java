@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springlearn.location.entities.Location;
 import com.springlearn.location.service.LocationService;
+import com.springlearn.location.util.EmailUtil;
 
 @Controller
 public class LocationController {
 
 	@Autowired
 	LocationService service;
+	
+	@Autowired
+	EmailUtil emailUtil;
 
 	@RequestMapping("/showCreate")
 	public String showCreate() {
@@ -28,6 +32,9 @@ public class LocationController {
 		Location savedLocation = service.saveLocation(location);
 		String msg = "Location saved with id: " + savedLocation.getId();
 		modelMap.addAttribute("msg", msg);
+		//Send an email after creating a location
+		emailUtil.sendEmail("aleandi077@gmail.com", "Created a new location",
+				"Location details: \n" + savedLocation.toString());
 		return "createLocation";
 	}
 
